@@ -1,0 +1,80 @@
+cd ./output
+rm -r *
+mkdir catmull
+mkdir doo
+mkdir midpoint
+mkdir loop
+mkdir root
+cd ../bin
+
+echo "Catmull"
+java SubD "../input/cube.s3d" "../output/catmull/cube.C1.s3d" C 1
+java SubD "../input/cube.s3d" "../output/catmull/cube.C2.s3d" C 2
+java SubD "../input/cube.s3d" "../output/catmull/cube.C3.s3d" C 3
+java SubD "../input/cube.s3d" "../output/catmull/cube.C4.s3d" C 4
+java SubD "../input/icosa.s3d" "../output/catmull/icosa.C1.s3d" C 1
+java SubD "../input/icosa.s3d" "../output/catmull/icosa.C2.s3d" C 2
+java SubD "../input/icosa.s3d" "../output/catmull/icosa.C3.s3d" C 3
+java SubD "../input/icosa.s3d" "../output/catmull/icosa.C4.s3d" C 4
+java SubD "../input/cube_hole.s3d" "../output/catmull/cube_hole.C1.s3d" C 1
+java SubD "../input/cube_hole.s3d" "../output/catmull/cube_hole.C2.s3d" C 2
+java SubD "../input/cube_hole.s3d" "../output/catmull/cube_hole.C3.s3d" C 3
+java SubD "../input/cube_hole.s3d" "../output/catmull/cube_hole.C4.s3d" C 4
+java SubD "../input/torii.s3d" "../output/catmull/torii.C1.s3d" C 1
+java SubD "../input/torii.s3d" "../output/catmull/torii.C2.s3d" C 2
+java SubD "../input/torii.s3d" "../output/catmull/torii.C3.s3d" C 3
+java SubD "../input/torii.s3d" "../output/catmull/torii.C4.s3d" C 4
+
+echo "Doo"
+java SubD "../input/cube.s3d" "../output/doo/cube.D1.s3d" D 1
+java SubD "../input/cube.s3d" "../output/doo/cube.D2.s3d" D 2
+java SubD "../input/cube.s3d" "../output/doo/cube.D3.s3d" D 3
+java SubD "../input/cube.s3d" "../output/doo/cube.D4.s3d" D 4
+
+echo "Midpoint"
+java SubD "../input/cube.s3d" "../output/midpoint/cube.M1.s3d" M 1
+java SubD "../input/cube.s3d" "../output/midpoint/cube.M2.s3d" M 2
+java SubD "../input/cube.s3d" "../output/midpoint/cube.M3.s3d" M 3
+java SubD "../input/cube.s3d" "../output/midpoint/cube.M4.s3d" M 4
+
+echo "Loop"
+java SubD "../input/cube.s3d" "../output/loop/cube.L1.s3d" L 1
+java SubD "../input/cube.s3d" "../output/loop/cube.L2.s3d" L 2
+java SubD "../input/cube.s3d" "../output/loop/cube.L3.s3d" L 3
+java SubD "../input/cube.s3d" "../output/loop/cube.L4.s3d" L 4
+java SubD "../input/icosa.s3d" "../output/loop/icosa.L1.s3d" L 1
+java SubD "../input/icosa.s3d" "../output/loop/icosa.L2.s3d" L 2
+java SubD "../input/icosa.s3d" "../output/loop/icosa.L3.s3d" L 3
+java SubD "../input/icosa.s3d" "../output/loop/icosa.L4.s3d" L 4
+
+echo "Root"
+java SubD "../input/cube.s3d" "../output/root/cube.R1.s3d" R 1
+java SubD "../input/cube.s3d" "../output/root/cube.R2.s3d" R 2
+java SubD "../input/cube.s3d" "../output/root/cube.R3.s3d" R 3
+java SubD "../input/cube.s3d" "../output/root/cube.R4.s3d" R 4
+java SubD "../input/icosa.s3d" "../output/root/icosa.R1.s3d" R 1
+java SubD "../input/icosa.s3d" "../output/root/icosa.R2.s3d" R 2
+java SubD "../input/icosa.s3d" "../output/root/icosa.R3.s3d" R 3
+java SubD "../input/icosa.s3d" "../output/root/icosa.R4.s3d" R 4
+
+echo "Venus"
+java SubD "../input/venus.s3d" "../output/catmull/venus.C1.s3d" C 1
+java SubD "../input/venus.s3d" "../output/loop/venus.L1.s3d" L 1
+java SubD "../input/venus.s3d" "../output/root/venus.R1.s3d" R 1
+java SubD "../input/venus.s3d" "../output/catmull/venus.C2.s3d" C 2
+java SubD "../input/venus.s3d" "../output/loop/venus.L2.s3d" L 2
+java SubD "../input/venus.s3d" "../output/root/venus.R2.s3d" R 2
+java SubD "../input/venus.s3d" "../output/catmull/venus.C3.s3d" C 3
+java SubD "../input/venus.s3d" "../output/loop/venus.L3.s3d" L 3
+java SubD "../input/venus.s3d" "../output/root/venus.R3.s3d" R 3
+
+echo "Teddy"
+java SubD "../input/teddy.s3d" "../output/catmull/teddy.C1.s3d" C 1
+java SubD "../input/teddy.s3d" "../output/loop/teddy.L1.s3d" L 1
+java SubD "../input/teddy.s3d" "../output/root/teddy.R1.s3d" R 1
+java SubD "../input/teddy.s3d" "../output/catmull/teddy.C2.s3d" C 2
+java SubD "../input/teddy.s3d" "../output/loop/teddy.L2.s3d" L 2
+java SubD "../input/teddy.s3d" "../output/root/teddy.R2.s3d" R 2
+java SubD "../input/teddy.s3d" "../output/catmull/teddy.C3.s3d" C 3
+java SubD "../input/teddy.s3d" "../output/loop/teddy.L3.s3d" L 3
+java SubD "../input/teddy.s3d" "../output/root/teddy.R3.s3d" R 3

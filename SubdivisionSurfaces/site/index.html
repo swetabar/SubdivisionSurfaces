@@ -1,0 +1,195 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+
+<head>
+<title>CS779 Project</title>
+<meta name="ROBOTS" content="NOINDEX, NOFOLLOW" />
+<meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+</head>
+
+<body bgcolor="#505050">
+<div style="background-color:rgb(0, 0, 148); width:620px; margin-left:auto; margin-right:auto; padding:3%">
+<font color="#FFFFFF">
+<center>
+<h1>Subdivision Surfaces</h1>
+<h2>Sweta Barman</h2>
+</center>
+<hr width="600" />
+<br />
+<center>
+<h3>Catmull-Clark Subdivision</h3>
+</center>
+I implemented the Catmull-Clark subdivision scheme for my core project.<br />
+<br />
+<table>
+<center>
+<tr><td><img src="images/cube.png"></td><td><img src="images/cube.C1.png"></td><td><img src="images/cube.C2.png"></td><td><img src="images/cube.C3.png"></td></tr>
+<tr><td><center>Base</center></td><td><center>Level 1</center></td><td><center>Level 2</center></td><td><center>Level 3</center></td></tr>
+</center>
+</table>
+<br />
+As an extra, I extended my Catmull-Clark implementation for meshes that have holes.<br />
+<br />
+<table>
+<center>
+<tr><td><img src="images/torii.png"></td><td><img src="images/torii.C1.png"></td><td><img src="images/torii.C2.png"></td><td><img src="images/torii.C3.png"></td></tr>
+<tr><td><center>Base</center></td><td><center>Level 1</center></td><td><center>Level 2</center></td><td><center>Level 3</center></td></tr>
+</center>
+</table>
+<br />
+<hr width="600" />
+<br />
+<center>
+<h3>Doo-Sabin Subdivision</h3>
+</center>
+Doo-Sabin subdivision is another scheme that works for polygonal meshes.<br />
+<br />
+<table>
+<tr><td><img src="images/cube.png"></td><td><img src="images/cube.D1.png"></td><td><img src="images/cube.D2.png"></td><td><img src="images/cube.D3.png"></td></tr>
+<tr><td><center>Base</center></td><td><center>Level 1</center></td><td><center>Level 2</center></td><td><center>Level 3</center></td></tr>
+</table>
+<br />
+<hr width="600" />
+<br />
+<center>
+<h3>Midpoint Subdivision</h3>
+</center>
+Midpoint subdivision is a simple scheme that works for polygonal meshes.<br />
+<br />
+<table>
+<tr><td><img src="images/cube.png"></td><td><img src="images/cube.M1.png"></td><td><img src="images/cube.M2.png"></td><td><img src="images/cube.M3.png"></td></tr>
+<tr><td><center>Base</center></td><td><center>Level 1</center></td><td><center>Level 2</center></td><td><center>Level 3</center></td></tr>
+</table>
+<br />
+<hr width="600" />
+<br />
+<center>
+<h3>Catmull-Clark vs Doo-Sabin vs Midpoint</h3>
+</center>
+<br />
+All three schemes require storing the vertices, edges and faces data.<br />
+<br />
+For a cube base mesh, Catmull-Clark returns more rounded subdivision surfaces than Doo-Sabin and Midpoint.<br />
+<br />
+For a cube base mesh, Doo-Sabin Level n gives output similar to Midpoint Level 2n.<br />
+<br />
+<table>
+<tr><td><img src="images/cube.png"></td><td><img src="images/cube.C3.png"></td><td><img src="images/cube.D3.png"></td><td><img src="images/cube.M3.png"></td></tr>
+<tr><td><center>Base</center></td><td><center>Catmull-Clark<br />Level 3</center></td><td><center>Doo-Sabin<br />Level 3</center></td><td><center>Midpoint<br />Level 3</center></td></tr>
+</table>
+<br />
+<br />
+<hr width="600" />
+<br />
+<center>
+<h3>Triangulation</h3>
+</center>
+The Loop and √3 subdivision schemes require the mesh to be composed of triangles. There are several ways to triangulate a mesh. Different triangulations of the base mesh lead to different subdivision surfaces.<br />
+<br />
+Two simple ways are the center and the fan schemes:<br />
+<br />
+<table>
+<tr><td><img src="images/cube.png"></td><td><img src="images/cube.cen.png"></td><td><img src="images/cube.fan.png"></td></tr>
+<tr><td><center>Base</center></td><td><center>Center</center></td><td><center>Fan</center></td></tr>
+</table>
+<br />
+<hr width="600" />
+<br />
+<center>
+<h3>Loop Subdivision</h3>
+</center>
+Loop subdivision is a simple scheme that works for triangular meshes.<br />
+<br />
+<table>
+<tr><td><img src="images/cube.cen.png"></td><td><img src="images/cube.L1.png"></td><td><img src="images/cube.L2.png"></td><td><img src="images/cube.L3.png"></td></tr>
+<tr><td><center>Base</center></td><td><center>Level 1</center></td><td><center>Level 2</center></td><td><center>Level 3</center></td></tr>
+</table>
+<br />
+<table>
+<tr><td><img src="images/teddy.png"></td><td><img src="images/teddy.L1.png"></td><td><img src="images/teddy.L2.png"></td><td><img src="images/teddy.L3.png"></td></tr>
+<tr><td><center>Base</center></td><td><center>Level 1</center></td><td><center>Level 2</center></td><td><center>Level 3</center></td></tr>
+</table>
+<br />
+<hr width="600" />
+<br />
+<center>
+<h3>√3  Subdivision</h3>
+</center>
+√3 subdivision is another simple scheme that works for triangular meshes.<br />
+<br />
+<table>
+<tr><td><img src="images/cube.cen.png"></td><td><img src="images/cube.R1.png"></td><td><img src="images/cube.R2.png"></td><td><img src="images/cube.R3.png"></td></tr>
+<tr><td><center>Base</center></td><td><center>Level 1</center></td><td><center>Level 2</center></td><td><center>Level 3</center></td></tr>
+</table>
+<br />
+<table>
+<tr><td><img src="images/teddy.png"></td><td><img src="images/teddy.R1.png"></td><td><img src="images/teddy.R2.png"></td><td><img src="images/teddy.R3.png"></td></tr>
+<tr><td><center>Base</center></td><td><center>Level 1</center></td><td><center>Level 2</center></td><td><center>Level 3</center></td></tr>
+</table>
+<br />
+<hr width="600" />
+<br />
+<center>
+<h3>Loop vs √3</h3>
+</center>
+These schemes are very easy to implement, but require triangular meshes.<br />
+<br />
+√3 subdivision outputs fewer triangles than Loop subdivision.<br />
+<br />
+<table>
+<tr><td><img src="images/cube.cen.png"></td><td><img src="images/cube.L3.png"></td><td><img src="images/cube.R3.png"></td></tr>
+<tr><td><center>Base</center></td><td><center>Loop<br />Level 3</center></td><td><center>√3<br />Level 3</center></td></tr>
+</table>
+<br />
+<table>
+<tr><td><img src="images/teddy.png"></td><td><img src="images/teddy.L1.png"></td><td><img src="images/teddy.R1.png"></td></tr>
+<tr><td><center>Base</center></td><td><center>Loop<br />Level 1</center></td><td><center>√3<br />Level 1</center></td></tr>
+</table>
+<br />
+<br />
+<hr width="600" />
+<br />
+<center>
+<h3>Extras</h3>
+</center>
+1. Extended the Catmull-Clark implementation for meshes with holes.<br />
+<br />
+2. Implemented Doo-Sabin and Midpoint subdivision schemes.<br />
+<br />
+3. Implemented Loop and √3 subdivision schemes.<br />
+<br />
+4. Compared all the implemented schemes.<br />
+<br />
+<hr width="600" />
+<br />
+<center>
+<h3>What I Learned</h3>
+</center>
+1. Some schemes are much easier to implement than others.<br />
+<br />
+2. It's better to analyze everything that's required before coding.<br />
+<br />
+3. Integration with CGLV lets you focus on the actual work.<br />
+<br />
+<hr width="600" />
+<br />
+<center>
+<h3>References</h3>
+</center>
+1. Catmull, Clark, 1978, Recursively generated B-spline surfaces on arbitrary topological meshes.<br />
+<br />
+2. Doo, 1978, A subdivision algorithm for smoothing down irregularly shaped polyhedrons.<br />
+<br />
+3. Peters, Reif, 1997, The simplest subdivision scheme for smoothing polyhedra.<br />
+<br />
+4. Loop, 1987, Smooth Subdivision Surfaces Based on Triangles.<br />
+<br />
+5. Kobbelt, 2000, Root 3-Subdivision.<br />
+<br />
+<hr width="600" />
+<br />
+</font>
+</div>
+</body>
+
+</html>
