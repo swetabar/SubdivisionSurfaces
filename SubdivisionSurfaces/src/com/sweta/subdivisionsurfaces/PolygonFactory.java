@@ -1,6 +1,7 @@
 package com.sweta.subdivisionsurfaces;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import com.sweta.subdivisionsurfaces.Polygon.Edge;
 
@@ -11,7 +12,7 @@ public class PolygonFactory {
 	}
 
 	public static Polygon fromPointsConvex(final MyHashSet<Point> points, final Color color) {
-		final ArrayList<Point> pts = ConvexHull.getConvexHullOrderedPoints(points);
+		final List<Point> pts = ConvexHull.getConvexHullOrderedPoints(points);
 		if (!PolygonFactory.validateInput(pts)) {
 			throw new IllegalArgumentException("Invalid set of points!");
 		}
@@ -24,11 +25,11 @@ public class PolygonFactory {
 		return new Polygon(pts, edges, normal, color);
 	}
 
-	public static Polygon fromOrderedPoints(final ArrayList<Point> points) {
+	public static Polygon fromOrderedPoints(final List<Point> points) {
 		return PolygonFactory.fromOrderedPoints(points, Color.DEFAULT);
 	}
 
-	private static Polygon fromOrderedPoints(final ArrayList<Point> points, final Color color) {
+	private static Polygon fromOrderedPoints(final List<Point> points, final Color color) {
 		if (!PolygonFactory.validateInput(points)) {
 			throw new IllegalArgumentException("Invalid set of points!");
 		}
@@ -41,7 +42,7 @@ public class PolygonFactory {
 		return new Polygon(points, edges, normal, color);
 	}
 
-	public static MyHashSet<Polygon> triangulateCentroid(final ArrayList<Point> points, final Color color) {
+	public static MyHashSet<Polygon> triangulateCentroid(final List<Point> points, final Color color) {
 		if (points.size() < 3) {
 			throw new IllegalArgumentException("Invalid set of points!");
 		}
@@ -59,14 +60,14 @@ public class PolygonFactory {
 
 		final Point[] pts = points.toArray(new Point[0]);
 		for (int i = 0; i < pts.length - 1; i++) {
-			final ArrayList<Point> triPts = new ArrayList<>();
+			final List<Point> triPts = new ArrayList<>();
 			triPts.add(centroid);
 			triPts.add(pts[i]);
 			triPts.add(pts[i + 1]);
 			triangles.add(PolygonFactory.createTriangle(triPts, color));
 		}
 		{
-			final ArrayList<Point> triPts = new ArrayList<>();
+			final List<Point> triPts = new ArrayList<>();
 			triPts.add(centroid);
 			triPts.add(pts[pts.length - 1]);
 			triPts.add(pts[0]);
@@ -76,14 +77,14 @@ public class PolygonFactory {
 		return triangles;
 	}
 
-	public static MyHashSet<Polygon> triangulateFan(final ArrayList<Point> points, final Color color) {
+	public static MyHashSet<Polygon> triangulateFan(final List<Point> points, final Color color) {
 		if (points.size() < 3) {
 			throw new IllegalArgumentException("Invalid set of points!");
 		}
 		final MyHashSet<Polygon> triangles = new MyHashSet<>();
 		final Point[] pts = points.toArray(new Point[0]);
 		for (int i = 1; i < pts.length - 1; i++) {
-			final ArrayList<Point> triPts = new ArrayList<>();
+			final List<Point> triPts = new ArrayList<>();
 			triPts.add(pts[0]);
 			triPts.add(pts[i]);
 			triPts.add(pts[i + 1]);
@@ -92,7 +93,7 @@ public class PolygonFactory {
 		return triangles;
 	}
 
-	public static Polygon createTriangle(final ArrayList<Point> points, final Color color) {
+	public static Polygon createTriangle(final List<Point> points, final Color color) {
 		if (points.size() != 3) {
 			throw new IllegalArgumentException("Invalid set of points!");
 		}
@@ -108,7 +109,7 @@ public class PolygonFactory {
 	private static boolean PLANARITY_CHECKING = false;
 	private static float PLANARITY_CHECKING_MAX_DOT_PRODUCT_SIZE = 1e-3f;
 
-	private static boolean validateInput(final ArrayList<Point> points) {
+	private static boolean validateInput(final List<Point> points) {
 		if (points.size() < 3) {
 			return false;
 		}

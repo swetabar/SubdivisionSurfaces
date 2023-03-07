@@ -24,8 +24,6 @@ public class MidpointAlgorithm extends AbstractSubdivisionAlgorithm {
 
 	@Override
 	public MyHashSet<Polygon> run() {
-		System.out.println("\tInput mesh has " + this.mesh.describe());
-
 		// Filling the edgepoints
 		for (final Edge edge : this.mesh.edges) {
 			this.edgePoints.put(edge, this.getEdgePoint(edge));
@@ -41,8 +39,7 @@ public class MidpointAlgorithm extends AbstractSubdivisionAlgorithm {
 				set.add(newFace);
 			}
 		}
-
-		System.out.println("\tOutput set has " + set.size() + " faces.\n");
+		
 		return set;
 	}
 

@@ -2,12 +2,13 @@ package com.sweta.subdivisionsurfaces;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.List;
 
 import com.sweta.subdivisionsurfaces.Polygon.Edge;
 
 public class ConvexHull {
 
-	public static ArrayList<Point> getConvexHullOrderedPoints(final MyHashSet<Point> points) {
+	public static List<Point> getConvexHullOrderedPoints(final MyHashSet<Point> points) {
 		final int n = points.size();
 		if (n == 3) {
 			return ConvexHull.getConvexHullOrderedPointsTriangle(points);
@@ -18,13 +19,13 @@ public class ConvexHull {
 		}
 	}
 
-	private static ArrayList<Point> getConvexHullOrderedPointsTriangle(final MyHashSet<Point> points) {
-		final ArrayList<Point> retVal = new ArrayList<>();
+	private static List<Point> getConvexHullOrderedPointsTriangle(final MyHashSet<Point> points) {
+		final List<Point> retVal = new ArrayList<>();
 		retVal.addAll(points);
 		return retVal;
 	}
 
-	private static ArrayList<Point> getConvexHullOrderedPointsQuad(final MyHashSet<Point> points) {
+	private static List<Point> getConvexHullOrderedPointsQuad(final MyHashSet<Point> points) {
 		final Point[] pts = points.toArray(new Point[0]);
 
 		final Edge[] edges = new Edge[6];
@@ -50,7 +51,7 @@ public class ConvexHull {
 		final Point[] diag1Pts = diag1.getEnds().toArray(new Point[0]);
 		final Point[] diag2Pts = diag2.getEnds().toArray(new Point[0]);
 
-		final ArrayList<Point> retVal = new ArrayList<>();
+		final List<Point> retVal = new ArrayList<>();
 		retVal.add(diag1Pts[0]);
 		retVal.add(diag2Pts[0]);
 		retVal.add(diag1Pts[1]);
@@ -58,7 +59,7 @@ public class ConvexHull {
 		return retVal;
 	}
 
-	public static MyHashSet<Edge> getConvexHullEdges(final ArrayList<Point> points) {
+	public static MyHashSet<Edge> getConvexHullEdges(final List<Point> points) {
 		final int n = points.size();
 		if (n == 3) {
 			return ConvexHull.getConvexHullEdgesTriangle(points);
@@ -69,7 +70,7 @@ public class ConvexHull {
 		}
 	}
 
-	private static MyHashSet<Edge> getConvexHullEdgesTriangle(final ArrayList<Point> points) {
+	private static MyHashSet<Edge> getConvexHullEdgesTriangle(final List<Point> points) {
 		final MyHashSet<Edge> retVal = new MyHashSet<>();
 		final Point[] pts = points.toArray(new Point[0]);
 		retVal.add(new Edge(pts[0], pts[1]));
@@ -78,7 +79,7 @@ public class ConvexHull {
 		return retVal;
 	}
 
-	private static MyHashSet<Edge> getConvexHullEdgesQuad(final ArrayList<Point> points) {
+	private static MyHashSet<Edge> getConvexHullEdgesQuad(final List<Point> points) {
 		final Point[] pts = points.toArray(new Point[0]);
 		final Edge[] edges = new Edge[6];
 		edges[0] = new Edge(pts[0], pts[1]);

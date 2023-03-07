@@ -81,8 +81,6 @@ public class LoopAlgorithm extends AbstractSubdivisionAlgorithm {
 
 	@Override
 	public MyHashSet<Polygon> run() {
-		System.out.println("\tInput mesh has " + this.mesh.describe());
-
 		// Filling the edgepoints
 		for (final Edge edge : this.mesh.edges) {
 			this.edgePoints.put(edge, this.getEdgePoint(edge));
@@ -97,8 +95,7 @@ public class LoopAlgorithm extends AbstractSubdivisionAlgorithm {
 		for (final Polygon face : this.mesh.faces) {
 			set.addAll(this.getNewFaces(face));
 		}
-
-		System.out.println("\tOutput set has " + set.size() + " faces.\n");
+		
 		return set;
 	}
 

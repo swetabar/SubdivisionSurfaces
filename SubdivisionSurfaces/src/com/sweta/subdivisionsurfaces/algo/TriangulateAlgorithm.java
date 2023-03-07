@@ -12,12 +12,10 @@ public class TriangulateAlgorithm extends AbstractSubdivisionAlgorithm {
 
 	@Override
 	public MyHashSet<Polygon> run() {
-		System.out.println("\tInput mesh has " + this.mesh.describe());
 		final MyHashSet<Polygon> set = new MyHashSet<>();
 		for (final Polygon face : this.mesh.faces) {
 			set.addAll(face.triangulateCentroid());
 		}
-		System.out.println("\tOutput set has " + set.size() + " faces.\n");
 		return set;
 	}
 }

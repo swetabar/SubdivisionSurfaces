@@ -101,7 +101,6 @@ public class CatmullClarkAlgorithm extends AbstractSubdivisionAlgorithm {
 
 	@Override
 	public MyHashSet<Polygon> run() {
-		System.out.println("\tInput mesh has " + this.mesh.describe());
 
 		// Filling the facepoints
 		for (final Polygon face : this.mesh.faces) {
@@ -123,7 +122,6 @@ public class CatmullClarkAlgorithm extends AbstractSubdivisionAlgorithm {
 			set.addAll(this.getNewFaces(face));
 		}
 
-		System.out.println("\tOutput set has " + set.size() + " faces.\n");
 		return set;
 	}
 

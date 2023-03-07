@@ -1,8 +1,8 @@
 package com.sweta.subdivisionsurfaces;
 
+import java.util.Collection;
 import java.util.HashMap;
 import java.util.Map;
-import java.util.Set;
 
 import com.sweta.subdivisionsurfaces.Polygon.Edge;
 
@@ -15,7 +15,7 @@ public class PolygonMesh {
 	public final Map<Polygon.Edge, MyHashSet<Polygon>> edgeFaces = new HashMap<>();
 	public final Map<Point, MyHashSet<Polygon.Edge>> pointEdges = new HashMap<>();
 
-	public PolygonMesh(final Set<Polygon> polySet) {
+	public PolygonMesh(final Collection<Polygon> polySet) {
 		for (final Polygon poly : polySet) {
 			this.faces.add(poly);
 			this.edges.addAll(poly.getEdges());

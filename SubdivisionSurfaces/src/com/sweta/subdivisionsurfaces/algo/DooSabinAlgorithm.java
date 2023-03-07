@@ -107,8 +107,6 @@ public class DooSabinAlgorithm extends AbstractSubdivisionAlgorithm {
 
 	@Override
 	public MyHashSet<Polygon> run() {
-		System.out.println("\tInput mesh has " + this.mesh.describe());
-
 		// Filling the facepoints
 		for (final Polygon face : this.mesh.faces) {
 			this.facePoints.put(face, this.getFacePoint(face));
@@ -142,7 +140,6 @@ public class DooSabinAlgorithm extends AbstractSubdivisionAlgorithm {
 			set.add(this.getNewVFace(vertex));
 		}
 
-		System.out.println("\tOutput set has " + set.size() + " faces.\n");
 		return set;
 	}
 
