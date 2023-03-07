@@ -1,24 +1,26 @@
 package com.sweta.basic;
 
 import java.util.HashMap;
+import java.util.Map;
+import java.util.Set;
 
 import com.sweta.basic.Polygon.Edge;
 
 public class PolygonMesh {
 
-	public final MyHashSet<Polygon> faces = new MyHashSet<Polygon>();
+	public final MyHashSet<Polygon> faces = new MyHashSet<>();
 
-	public final MyHashSet<Polygon.Edge> edges = new MyHashSet<Polygon.Edge>();
+	public final MyHashSet<Polygon.Edge> edges = new MyHashSet<>();
 
-	public final MyHashSet<Point> points = new MyHashSet<Point>();
+	public final MyHashSet<Point> points = new MyHashSet<>();
 
-	public final HashMap<Point, MyHashSet<Polygon>> pointFaces = new HashMap<Point, MyHashSet<Polygon>>();
+	public final Map<Point, MyHashSet<Polygon>> pointFaces = new HashMap<>();
 
-	public final HashMap<Polygon.Edge, MyHashSet<Polygon>> edgeFaces = new HashMap<Polygon.Edge, MyHashSet<Polygon>>();
+	public final Map<Polygon.Edge, MyHashSet<Polygon>> edgeFaces = new HashMap<>();
 
-	public final HashMap<Point, MyHashSet<Polygon.Edge>> pointEdges = new HashMap<Point, MyHashSet<Polygon.Edge>>();
+	public final Map<Point, MyHashSet<Polygon.Edge>> pointEdges = new HashMap<>();
 
-	public PolygonMesh(final MyHashSet<Polygon> polySet) {
+	public PolygonMesh(final Set<Polygon> polySet) {
 		for (final Polygon poly : polySet) {
 			this.faces.add(poly);
 			this.edges.addAll(poly.getEdges());
