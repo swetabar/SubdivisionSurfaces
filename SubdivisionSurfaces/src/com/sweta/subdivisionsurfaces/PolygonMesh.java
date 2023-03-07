@@ -1,10 +1,10 @@
-package com.sweta.basic;
+package com.sweta.subdivisionsurfaces;
 
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Set;
 
-import com.sweta.basic.Polygon.Edge;
+import com.sweta.subdivisionsurfaces.Polygon.Edge;
 
 public class PolygonMesh {
 

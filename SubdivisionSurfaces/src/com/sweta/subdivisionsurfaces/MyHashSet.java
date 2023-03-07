@@ -1,4 +1,4 @@
-package com.sweta.basic;
+package com.sweta.subdivisionsurfaces;
 
 import java.util.HashSet;
 import java.util.Iterator;

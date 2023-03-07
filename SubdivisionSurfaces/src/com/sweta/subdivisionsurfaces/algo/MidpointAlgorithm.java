@@ -1,13 +1,13 @@
-package com.sweta.basic.algo;
+package com.sweta.subdivisionsurfaces.algo;
 
 import java.util.HashMap;
 
-import com.sweta.basic.MyHashSet;
-import com.sweta.basic.Point;
-import com.sweta.basic.Polygon;
-import com.sweta.basic.Polygon.Edge;
-import com.sweta.basic.PolygonFactory;
-import com.sweta.basic.PolygonMesh;
+import com.sweta.subdivisionsurfaces.MyHashSet;
+import com.sweta.subdivisionsurfaces.Point;
+import com.sweta.subdivisionsurfaces.Polygon;
+import com.sweta.subdivisionsurfaces.PolygonFactory;
+import com.sweta.subdivisionsurfaces.PolygonMesh;
+import com.sweta.subdivisionsurfaces.Polygon.Edge;
 
 public class MidpointAlgorithm extends AbstractSubdivisionAlgorithm {
 

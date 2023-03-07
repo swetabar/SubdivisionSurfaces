@@ -1,8 +1,8 @@
-package com.sweta.basic;
+package com.sweta.subdivisionsurfaces;
 
 import java.util.ArrayList;
 
-import com.sweta.basic.Polygon.Edge;
+import com.sweta.subdivisionsurfaces.Polygon.Edge;
 
 public class PolygonFactory {
 

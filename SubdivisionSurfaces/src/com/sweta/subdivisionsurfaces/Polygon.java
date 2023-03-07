@@ -1,88 +1,10 @@
-package com.sweta.basic;
+package com.sweta.subdivisionsurfaces;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 
 public class Polygon {
-
-	public static class Edge implements Comparable<Edge> {
-
-		private final MyHashSet<Point> ends = new MyHashSet<>();
-
-		public Edge(final Point endA, final Point endB) {
-			if (endA == null || endB == null) {
-				throw new NullPointerException();
-			}
-			if (endA.equals(endB)) {
-				throw new IllegalArgumentException("Invalid edge! endA=" + endA.toString() + " endB=" + endB.toString());
-			}
-			this.ends.add(endA);
-			this.ends.add(endB);
-		}
-
-		@Override
-		public int hashCode() {
-			final int prime = 31;
-			int result = 1;
-			result = prime * result + (this.ends == null ? 0 : this.ends.hashCode());
-			return result;
-		}
-
-		@Override
-		public String toString() {
-			return "Edge [ends=" + this.ends.toString() + "]";
-		}
-
-		@Override
-		public boolean equals(final Object obj) {
-			if (this == obj) {
-				return true;
-			}
-			if ((obj == null) || (this.getClass() != obj.getClass())) {
-				return false;
-			}
-			final Edge other = (Edge) obj;
-			if (this.ends == null) {
-				if (other.ends != null) {
-					return false;
-				}
-			} else if (!this.ends.equals(other.ends)) {
-				return false;
-			}
-			return true;
-		}
-
-		public MyHashSet<Point> getEnds() {
-			return this.ends;
-		}
-
-		public float length() {
-			final Point[] ends = this.ends.toArray(new Point[0]);
-			return new Vector(ends[0], ends[1]).length();
-		}
-
-		public Point midPoint() {
-			final Object[] arr = this.ends.toArray();
-			return Point.linearCombination((Point) arr[0], (Point) arr[1], 0.5f);
-		}
-
-		public boolean isEnd(final Point p) {
-			final Object[] arr = this.ends.toArray();
-			if (p.equals(arr[0]) || p.equals(arr[1])) {
-				return true;
-			}
-			return false;
-		}
-
-		@Override
-		public int compareTo(final Edge o) {
-			return Float.compare(this.length(), o.length());
-		}
-
-		public boolean meets(final Edge other) {
-			return this.ends.intersection(other.ends).size() > 0;
-		}
-	}
 
 	private final ArrayList<Point> points = new ArrayList<>();
 
@@ -92,7 +14,7 @@ public class Polygon {
 
 	private final Color color;
 
-	public Polygon(final ArrayList<Point> argPoints, final MyHashSet<Edge> argEdges, final Vector argNormal, final Color argColor) {
+	public Polygon(final List<Point> argPoints, final MyHashSet<Edge> argEdges, final Vector argNormal, final Color argColor) {
 		if (argPoints == null || argEdges == null || argNormal == null) {
 			throw new NullPointerException("Non-null normal and sets of points and edges required!");
 		}
@@ -168,6 +90,22 @@ public class Polygon {
 		return points;
 	}
 
+	public MyHashSet<Edge> getEdges() {
+		return this.edges;
+	}
+
+	public List<Point> getPoints() {
+		return this.points;
+	}
+
+	public MyHashSet<Polygon> triangulateCentroid() {
+		return PolygonFactory.triangulateCentroid(this.points, this.color);
+	}
+
+	public MyHashSet<Polygon> triangulateFan() {
+		return PolygonFactory.triangulateFan(this.points, this.color);
+	}
+
 	@Override
 	public String toString() {
 		final Vector n = this.normal;
@@ -219,20 +157,83 @@ public class Polygon {
 		return true;
 	}
 
-	public MyHashSet<Edge> getEdges() {
-		return this.edges;
-	}
+	public static class Edge implements Comparable<Edge> {
+	
+		private final MyHashSet<Point> ends = new MyHashSet<>();
+	
+		public Edge(final Point endA, final Point endB) {
+			if (endA == null || endB == null) {
+				throw new NullPointerException();
+			}
+			if (endA.equals(endB)) {
+				throw new IllegalArgumentException("Invalid edge! endA=" + endA.toString() + " endB=" + endB.toString());
+			}
+			this.ends.add(endA);
+			this.ends.add(endB);
+		}
+	
+		public MyHashSet<Point> getEnds() {
+			return this.ends;
+		}
+	
+		public float length() {
+			final Point[] ends = this.ends.toArray(new Point[0]);
+			return new Vector(ends[0], ends[1]).length();
+		}
+	
+		public Point midPoint() {
+			final Object[] arr = this.ends.toArray();
+			return Point.linearCombination((Point) arr[0], (Point) arr[1], 0.5f);
+		}
+	
+		public boolean isEnd(final Point p) {
+			final Object[] arr = this.ends.toArray();
+			if (p.equals(arr[0]) || p.equals(arr[1])) {
+				return true;
+			}
+			return false;
+		}
+	
+		public boolean meets(final Edge other) {
+			return !this.ends.intersection(other.ends).isEmpty();
+		}
 
-	public ArrayList<Point> getPoints() {
-		return this.points;
-	}
+		@Override
+		public int compareTo(final Edge o) {
+			return Float.compare(this.length(), o.length());
+		}
 
-	public MyHashSet<Polygon> triangulateCentroid() {
-		return PolygonFactory.triangulateCentroid(this.points, this.color);
-	}
+		@Override
+		public int hashCode() {
+			final int prime = 31;
+			int result = 1;
+			result = prime * result + (this.ends == null ? 0 : this.ends.hashCode());
+			return result;
+		}
 
-	public MyHashSet<Polygon> triangulateFan() {
-		return PolygonFactory.triangulateFan(this.points, this.color);
+		@Override
+		public String toString() {
+			return "Edge [ends=" + this.ends.toString() + "]";
+		}
+
+		@Override
+		public boolean equals(final Object obj) {
+			if (this == obj) {
+				return true;
+			}
+			if ((obj == null) || (this.getClass() != obj.getClass())) {
+				return false;
+			}
+			final Edge other = (Edge) obj;
+			if (this.ends == null) {
+				if (other.ends != null) {
+					return false;
+				}
+			} else if (!this.ends.equals(other.ends)) {
+				return false;
+			}
+			return true;
+		}
 	}
 
 }

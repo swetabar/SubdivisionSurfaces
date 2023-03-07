@@ -1,4 +1,4 @@
-package com.sweta.basic;
+package com.sweta.subdivisionsurfaces;
 
 import java.io.BufferedReader;
 import java.io.File;

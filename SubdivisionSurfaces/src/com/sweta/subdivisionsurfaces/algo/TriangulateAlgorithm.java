@@ -1,8 +1,8 @@
-package com.sweta.basic.algo;
+package com.sweta.subdivisionsurfaces.algo;
 
-import com.sweta.basic.MyHashSet;
-import com.sweta.basic.Polygon;
-import com.sweta.basic.PolygonMesh;
+import com.sweta.subdivisionsurfaces.MyHashSet;
+import com.sweta.subdivisionsurfaces.Polygon;
+import com.sweta.subdivisionsurfaces.PolygonMesh;
 
 public class TriangulateAlgorithm extends AbstractSubdivisionAlgorithm {
 

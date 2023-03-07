@@ -4,17 +4,17 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.text.ParseException;
 
-import com.sweta.basic.InputFile;
-import com.sweta.basic.MyHashSet;
-import com.sweta.basic.Polygon;
-import com.sweta.basic.PolygonMesh;
-import com.sweta.basic.algo.AbstractSubdivisionAlgorithm;
-import com.sweta.basic.algo.CatmullClarkAlgorithm;
-import com.sweta.basic.algo.DooSabinAlgorithm;
-import com.sweta.basic.algo.LoopAlgorithm;
-import com.sweta.basic.algo.MidpointAlgorithm;
-import com.sweta.basic.algo.Root3Algorithm;
-import com.sweta.basic.algo.TriangulateAlgorithm;
+import com.sweta.subdivisionsurfaces.InputFile;
+import com.sweta.subdivisionsurfaces.MyHashSet;
+import com.sweta.subdivisionsurfaces.Polygon;
+import com.sweta.subdivisionsurfaces.PolygonMesh;
+import com.sweta.subdivisionsurfaces.algo.AbstractSubdivisionAlgorithm;
+import com.sweta.subdivisionsurfaces.algo.CatmullClarkAlgorithm;
+import com.sweta.subdivisionsurfaces.algo.DooSabinAlgorithm;
+import com.sweta.subdivisionsurfaces.algo.LoopAlgorithm;
+import com.sweta.subdivisionsurfaces.algo.MidpointAlgorithm;
+import com.sweta.subdivisionsurfaces.algo.Root3Algorithm;
+import com.sweta.subdivisionsurfaces.algo.TriangulateAlgorithm;
 
 public class SubD {
 
