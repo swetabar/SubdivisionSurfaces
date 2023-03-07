@@ -9,15 +9,10 @@ import com.sweta.subdivisionsurfaces.Polygon.Edge;
 public class PolygonMesh {
 
 	public final MyHashSet<Polygon> faces = new MyHashSet<>();
-
 	public final MyHashSet<Polygon.Edge> edges = new MyHashSet<>();
-
 	public final MyHashSet<Point> points = new MyHashSet<>();
-
 	public final Map<Point, MyHashSet<Polygon>> pointFaces = new HashMap<>();
-
 	public final Map<Polygon.Edge, MyHashSet<Polygon>> edgeFaces = new HashMap<>();
-
 	public final Map<Point, MyHashSet<Polygon.Edge>> pointEdges = new HashMap<>();
 
 	public PolygonMesh(final Set<Polygon> polySet) {

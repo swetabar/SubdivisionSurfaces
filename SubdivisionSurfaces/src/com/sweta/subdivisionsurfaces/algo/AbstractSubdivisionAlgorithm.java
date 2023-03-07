@@ -1,6 +1,7 @@
 package com.sweta.subdivisionsurfaces.algo;
 
-import com.sweta.subdivisionsurfaces.MyHashSet;
+import java.util.Set;
+
 import com.sweta.subdivisionsurfaces.Polygon;
 import com.sweta.subdivisionsurfaces.PolygonMesh;
 
@@ -12,5 +13,5 @@ public abstract class AbstractSubdivisionAlgorithm {
 		this.mesh = mesh;
 	}
 
-	public abstract MyHashSet<Polygon> run();
+	public abstract Set<Polygon> run();
 }
