@@ -55,8 +55,7 @@ public class Vector extends Triple {
 
 	public static Vector projPlane(final Vector u, final Vector n) {
 		final Vector proj = Vector.proj(u, n);
-		final Vector retVal = new Vector(u.x - proj.x, u.y - proj.y, u.z
-				- proj.z);
+		final Vector retVal = new Vector(u.x - proj.x, u.y - proj.y, u.z - proj.z);
 		return retVal;
 	}
 

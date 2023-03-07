@@ -22,8 +22,7 @@ public class Point extends Triple {
 		return new Point(k * this.x, k * this.y, k * this.z);
 	}
 
-	public static Point linearCombination(final Point P0, final Point P1,
-			final float a0) {
+	public static Point linearCombination(final Point P0, final Point P1, final float a0) {
 		final float x = a0 * P0.x + (1 - a0) * P1.x;
 		final float y = a0 * P0.y + (1 - a0) * P1.y;
 		final float z = a0 * P0.z + (1 - a0) * P1.z;

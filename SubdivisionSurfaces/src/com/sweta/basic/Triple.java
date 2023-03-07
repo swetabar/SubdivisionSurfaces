@@ -32,19 +32,22 @@ public class Triple {
 
 	@Override
 	public boolean equals(final Object obj) {
-		if (this == obj)
+		if (this == obj) {
 			return true;
-		if (obj == null)
+		}
+		if ((obj == null) || (this.getClass() != obj.getClass())) {
 			return false;
-		if (this.getClass() != obj.getClass())
-			return false;
+		}
 		final Triple other = (Triple) obj;
-		if (Float.floatToIntBits(this.x) != Float.floatToIntBits(other.x))
+		if (Float.floatToIntBits(this.x) != Float.floatToIntBits(other.x)) {
 			return false;
-		if (Float.floatToIntBits(this.y) != Float.floatToIntBits(other.y))
+		}
+		if (Float.floatToIntBits(this.y) != Float.floatToIntBits(other.y)) {
 			return false;
-		if (Float.floatToIntBits(this.z) != Float.floatToIntBits(other.z))
+		}
+		if (Float.floatToIntBits(this.z) != Float.floatToIntBits(other.z)) {
 			return false;
+		}
 		return true;
 	}
 
