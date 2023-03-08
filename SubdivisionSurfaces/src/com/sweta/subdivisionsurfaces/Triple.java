@@ -1,4 +1,4 @@
-package com.sweta.basic;
+package com.sweta.subdivisionsurfaces;
 
 public class Triple {
 
@@ -32,20 +32,14 @@ public class Triple {
 
 	@Override
 	public boolean equals(final Object obj) {
-		if (this == obj)
+		if (this == obj) {
 			return true;
-		if (obj == null)
+		}
+		if ((obj == null) || (this.getClass() != obj.getClass())) {
 			return false;
-		if (this.getClass() != obj.getClass())
-			return false;
-		final Triple other = (Triple) obj;
-		if (Float.floatToIntBits(this.x) != Float.floatToIntBits(other.x))
-			return false;
-		if (Float.floatToIntBits(this.y) != Float.floatToIntBits(other.y))
-			return false;
-		if (Float.floatToIntBits(this.z) != Float.floatToIntBits(other.z))
-			return false;
-		return true;
+		}
+		final Triple p = (Triple) obj;
+		return x == p.x && y == p.y && z == p.z;
 	}
 
 	public static float dotProduct(final Triple a, final Triple b) {

@@ -1,4 +1,4 @@
-package com.sweta.basic;
+package com.sweta.subdivisionsurfaces;
 
 public class Color extends Triple {
 
