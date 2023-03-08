@@ -99,7 +99,7 @@ public class Root3Algorithm extends AbstractSubdivisionAlgorithm {
 	}
 
 	private MyHashSet<Polygon> getNewFacesForEdge(final Polygon face, final Edge edge) {
-		if (!face.isEdge(edge)) {
+		if (!face.hasEdge(edge)) {
 			throw new RuntimeException("Invalid edge!");
 		}
 

@@ -1,12 +1,13 @@
 package com.sweta.subdivisionsurfaces;
 
-import java.util.ArrayList;
+import java.util.Collection;
 import java.util.HashMap;
+import java.util.LinkedHashSet;
 import java.util.List;
 
 public class Polygon {
 
-	private final ArrayList<Point> points = new ArrayList<>();
+	private final LinkedHashSet<Point> points = new LinkedHashSet<>();
 
 	private final MyHashSet<Edge> edges = new MyHashSet<>();
 
@@ -33,22 +34,12 @@ public class Polygon {
 		this.color = argColor;
 	}
 
-	public boolean isVertex(final Point point) {
-		for (final Point p : this.getPoints()) {
-			if (point.equals(p)) {
-				return true;
-			}
-		}
-		return false;
+	public boolean hasVertex(final Point point) {
+		return points.contains(point);
 	}
 
-	public boolean isEdge(final Edge e) {
-		for (final Edge edge : this.getEdges()) {
-			if (e.equals(edge)) {
-				return true;
-			}
-		}
-		return false;
+	public boolean hasEdge(final Edge e) {
+		return this.edges.contains(e);
 	}
 
 	private static MyHashSet<Point> validateEdges(final MyHashSet<Edge> edges) {
@@ -94,7 +85,7 @@ public class Polygon {
 		return this.edges;
 	}
 
-	public List<Point> getPoints() {
+	public Collection<Point> getPoints() {
 		return this.points;
 	}
 
@@ -158,9 +149,10 @@ public class Polygon {
 	}
 
 	public static class Edge implements Comparable<Edge> {
-	
+
 		private final MyHashSet<Point> ends = new MyHashSet<>();
-	
+		public final Point a, b;
+
 		public Edge(final Point endA, final Point endB) {
 			if (endA == null || endB == null) {
 				throw new NullPointerException();
@@ -170,30 +162,26 @@ public class Polygon {
 			}
 			this.ends.add(endA);
 			this.ends.add(endB);
+			this.a = endA;
+			this.b = endB;
 		}
-	
+
 		public MyHashSet<Point> getEnds() {
 			return this.ends;
 		}
-	
+
 		public float length() {
-			final Point[] ends = this.ends.toArray(new Point[0]);
-			return new Vector(ends[0], ends[1]).length();
+			return new Vector(a, b).length();
 		}
-	
+
 		public Point midPoint() {
-			final Object[] arr = this.ends.toArray();
-			return Point.linearCombination((Point) arr[0], (Point) arr[1], 0.5f);
+			return Point.linearCombination(a, b, 0.5f);
 		}
-	
+
 		public boolean isEnd(final Point p) {
-			final Object[] arr = this.ends.toArray();
-			if (p.equals(arr[0]) || p.equals(arr[1])) {
-				return true;
-			}
-			return false;
+			return (p.equals(a) || p.equals(b));
 		}
-	
+
 		public boolean meets(final Edge other) {
 			return !this.ends.intersection(other.ends).isEmpty();
 		}
@@ -205,10 +193,7 @@ public class Polygon {
 
 		@Override
 		public int hashCode() {
-			final int prime = 31;
-			int result = 1;
-			result = prime * result + (this.ends == null ? 0 : this.ends.hashCode());
-			return result;
+			return Float.floatToIntBits(b.y + a.y) ^ Float.floatToIntBits(b.x + a.x - 1);
 		}
 
 		@Override
@@ -229,10 +214,8 @@ public class Polygon {
 				if (other.ends != null) {
 					return false;
 				}
-			} else if (!this.ends.equals(other.ends)) {
-				return false;
 			}
-			return true;
+			return (other.a.equals(a) && other.b.equals(b)) || (other.a.equals(b) && other.b.equals(a));
 		}
 	}
 

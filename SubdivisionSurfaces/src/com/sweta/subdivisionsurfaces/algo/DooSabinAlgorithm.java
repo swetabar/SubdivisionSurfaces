@@ -164,10 +164,8 @@ public class DooSabinAlgorithm extends AbstractSubdivisionAlgorithm {
 	private Polygon getNewEFace(final Edge edge) {
 		final ArrayList<Point> points = new ArrayList<>();
 
-		final MyHashSet<Point> ends = edge.getEnds();
-		final Point[] endsArr = ends.toArray(new Point[0]);
-		final Point end0 = endsArr[0];
-		final Point end1 = endsArr[1];
+		final Point end0 = edge.a;
+		final Point end1 = edge.b;
 
 		final MyHashSet<Polygon> faces = this.mesh.edgeFaces.get(edge);
 		if (faces.size() != 2) {

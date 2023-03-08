@@ -1,6 +1,7 @@
 package com.sweta.subdivisionsurfaces;
 
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.List;
 
 import com.sweta.subdivisionsurfaces.Polygon.Edge;
@@ -42,7 +43,7 @@ public class PolygonFactory {
 		return new Polygon(points, edges, normal, color);
 	}
 
-	public static MyHashSet<Polygon> triangulateCentroid(final List<Point> points, final Color color) {
+	public static MyHashSet<Polygon> triangulateCentroid(final Collection<Point> points, final Color color) {
 		if (points.size() < 3) {
 			throw new IllegalArgumentException("Invalid set of points!");
 		}
@@ -77,7 +78,7 @@ public class PolygonFactory {
 		return triangles;
 	}
 
-	public static MyHashSet<Polygon> triangulateFan(final List<Point> points, final Color color) {
+	public static MyHashSet<Polygon> triangulateFan(final Collection<Point> points, final Color color) {
 		if (points.size() < 3) {
 			throw new IllegalArgumentException("Invalid set of points!");
 		}

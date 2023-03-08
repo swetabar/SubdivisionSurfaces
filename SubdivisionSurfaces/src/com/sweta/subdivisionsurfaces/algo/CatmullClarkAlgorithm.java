@@ -139,7 +139,7 @@ public class CatmullClarkAlgorithm extends AbstractSubdivisionAlgorithm {
 	}
 
 	private Polygon getNewFaceForVertex(final Polygon face, final Point p) {
-		if (!face.isVertex(p)) {
+		if (!face.hasVertex(p)) {
 			throw new RuntimeException("Invalid vertex!");
 		}
 

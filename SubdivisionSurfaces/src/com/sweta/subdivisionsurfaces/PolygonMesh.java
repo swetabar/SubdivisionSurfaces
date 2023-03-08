@@ -21,36 +21,16 @@ public class PolygonMesh {
 			this.edges.addAll(poly.getEdges());
 			this.points.addAll(poly.getPoints());
 		}
-
-		for (final Point p : this.points) {
-			final MyHashSet<Polygon> set = new MyHashSet<>();
-			for (final Polygon poly : this.faces) {
-				if (poly.isVertex(p)) {
-					set.add(poly);
-				}
-			}
-			this.pointFaces.put(p, set);
-		}
-
-		for (final Edge e : this.edges) {
-			final MyHashSet<Polygon> set = new MyHashSet<>();
-			for (final Polygon poly : this.faces) {
-				if (poly.isEdge(e)) {
-					set.add(poly);
-				}
-			}
-			this.edgeFaces.put(e, set);
-		}
-
-		for (final Point p : this.points) {
-			final MyHashSet<Polygon.Edge> set = new MyHashSet<>();
-			for (final Polygon.Edge edge : this.edges) {
-				if (edge.isEnd(p)) {
-					set.add(edge);
-				}
-			}
-			this.pointEdges.put(p, set);
-		}
+		
+		faces.forEach(poly -> {
+			poly.getEdges().forEach(e -> {
+				this.pointFaces.computeIfAbsent(e.a, (x -> new MyHashSet<>())).add(poly);
+				this.pointFaces.computeIfAbsent(e.b, (x -> new MyHashSet<>())).add(poly);
+				this.edgeFaces.computeIfAbsent(e, (x -> new MyHashSet<>())).add(poly);				
+				this.pointEdges.computeIfAbsent(e.a, (x -> new MyHashSet<>())).add(e);				
+				this.pointEdges.computeIfAbsent(e.b, (x -> new MyHashSet<>())).add(e);				
+			});
+		});
 	}
 
 	public String describe() {
